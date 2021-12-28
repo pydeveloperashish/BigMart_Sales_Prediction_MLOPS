@@ -7,7 +7,7 @@ data_source:
   remote_source: data_given/train.csv
 
 load_data:
-  ra_dataset_csv: data/raw/train.csv
+  raw_dataset_csv: data/raw/train.csv
 
 split_data:
   train_path: data/processed/train.csv
