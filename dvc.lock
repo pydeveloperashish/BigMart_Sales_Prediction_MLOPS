@@ -7,11 +7,11 @@ stages:
       md5: e0df0a56f3f03c084c828b29aaa0f314
       size: 869537
     - path: src/get_data.py
-      md5: d16a8f5d985866e6c599a804188bc39c
-      size: 686
+      md5: 2f5d328b5192db2d03e53cd3b8737c99
+      size: 690
     - path: src/load_data.py
-      md5: cce9027f8840ab32e3c7fe4a13394e6f
-      size: 651
+      md5: d025894c6e03b7abdd8686e1d9bc5f4e
+      size: 659
     outs:
     - path: data/raw/train.csv
       md5: e07bb6e40d126f0d68cdf963d7287876
@@ -23,12 +23,38 @@ stages:
       md5: e07bb6e40d126f0d68cdf963d7287876
       size: 871595
     - path: src/split_data.py
-      md5: 2075c3ef745c5ab64a4fff0346e6a6c0
-      size: 1102
+      md5: dd0ec67ca6d4390b8e85ddb15943a35a
+      size: 1269
     outs:
     - path: data/processed/test.csv
-      md5: 9b385c378fe5722aae41900d5dca73f4
-      size: 174308
+      md5: 5a79ac03540dd402823dc2d3891917cc
+      size: 56997
     - path: data/processed/train.csv
-      md5: 4996f8c6f304a4de5eb957c874cf03fd
-      size: 697475
+      md5: 291bafaed94268f18f1396cf9b3d3e7a
+      size: 227575
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test.csv
+      md5: 5a79ac03540dd402823dc2d3891917cc
+      size: 56997
+    - path: data/processed/train.csv
+      md5: 291bafaed94268f18f1396cf9b3d3e7a
+      size: 227575
+    - path: src/train_and_evaluate.py
+      md5: 945fbd252b61010b4b26e6804a7fd33f
+      size: 2520
+    params:
+      params.yaml:
+        estimators.ElasticNet.params.alpha: 0.9
+        estimators.ElasticNet.params.l1_ratio: 0.4
+    outs:
+    - path: report/params.json
+      md5: 3edba33719fb2399c6bfb97221cac804
+      size: 44
+    - path: report/scores.json
+      md5: 8deaefac67a56532e945d72da00d1afc
+      size: 97
+    - path: saved_models/model.joblib
+      md5: 1c7de3b6b951fce806f6588398fb8497
+      size: 810
