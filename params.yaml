@@ -1,0 +1,23 @@
+base:
+  project: BigMart-Sales-Prediction-MLOPS
+  random_state: 42
+  target_col: Item_Outlet_Sales
+
+data_source:
+  remote_source: data_given/train.csv
+
+load_data:
+  ra_dataset_csv: data/raw/train.csv
+
+split_data:
+  train_path: data/processed/train.csv
+  test_path: data/processed/test.csv
+  test_size: 0.2
+
+estimators:
+  ElasticNet:
+    params:
+      alpha: 0.88
+      l1_ratio: 0.89
+
+model_dir: saved_models
