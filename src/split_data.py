@@ -18,9 +18,11 @@ def split_and_save(config_path):
     split_ratio = config["split_data"]["test_size"]
     random_state = config["base"]["random_state"]
 
+    cat = ['Item_Fat_Content','Item_Type','Outlet_Identifier','Outlet_Size','Outlet_Location_Type','Outlet_Type']
     df = pd.read_csv(raw_data_path)
     df = df.drop('Item_Identifier',axis=1)
-    df = df.apply(LabelEncoder().fit_transform)
+    df[cat] = df[cat].apply(LabelEncoder().fit_transform)
+    df.fillna(df.mean(), inplace=True)
 
     train, test = train_test_split(df,
                                    test_size=split_ratio,

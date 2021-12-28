@@ -17,8 +17,8 @@ split_data:
 estimators:
   ElasticNet:
     params:
-      alpha: 0.9
-      l1_ratio: 0.4
+      alpha: 0.91
+      l1_ratio: 0.89
 model_dir: saved_models
 
 reports:
