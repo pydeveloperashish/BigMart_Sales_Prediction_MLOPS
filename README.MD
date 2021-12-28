@@ -9,3 +9,4 @@ dvc init
 
 dvc add data_given/train.csv
 
+git add . && git commit -m "first commit"
