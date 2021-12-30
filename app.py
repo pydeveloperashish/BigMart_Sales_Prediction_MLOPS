@@ -58,7 +58,7 @@ def result():
         except Exception as e:
             print(e)
             error = {"error": "Something went wrong!! Try Again"}
-            return render_template("404.html", error=error)
+            return jsonify(error)
     else:
         return render_template("index.html")
 
