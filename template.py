@@ -7,7 +7,10 @@ dirs = [
     "notebooks",
     "saved_models",
     "src",
-    "data_given"
+    "data_given",
+    "prediction_service",
+    "webapp",
+    "tests"
 
 ]
 
@@ -21,6 +24,10 @@ files = [
     "params.yaml",
     ".gitignore",
     os.path.join("src", "__init__.py"),
+    os.path.join("tests", "__init__.py"),
+    os.path.join("prediction_service", "__init__.py"),
+    "app.py"
+
 
 ]
 
