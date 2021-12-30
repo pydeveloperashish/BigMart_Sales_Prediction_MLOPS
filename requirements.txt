@@ -4,3 +4,5 @@ scikit-learn
 joblib
 pandas
 matplotlib
+pytest
+wrapt
