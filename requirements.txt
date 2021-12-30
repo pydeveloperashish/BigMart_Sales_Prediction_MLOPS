@@ -7,3 +7,4 @@ matplotlib
 pytest
 wrapt
 flake8
+gunicorn

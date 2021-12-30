@@ -20,6 +20,7 @@ def split_and_save(config_path):
 
     df = pd.read_csv(raw_data_path)
     df = df.drop('Item_Identifier',axis=1)
+    df = df.drop('Outlet_Identifier',axis=1)
     cat=[i for i in df.columns if df.dtypes[i]=='object']
     df[cat] = df[cat].apply(LabelEncoder().fit_transform)
     df.fillna(df.mean(), inplace=True)
