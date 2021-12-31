@@ -1,5 +1,6 @@
 dvc
 dvc[gdrive]
+flask
 scikit-learn
 joblib
 pandas
