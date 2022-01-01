@@ -1,0 +1,14 @@
+ Item_Weight=float(request.form["Item_Weight"])
+                Item_Fat_Content=float(request.form["Item_Fat_Content"])
+                Item_Visibility=float(request.form["Item_Visibility"])
+                Item_Type=float(request.form["Item_Type"])
+                Item_MRP=float(request.form["Item_MRP"])
+                Outlet_Establishment_Year=float(request.form["Outlet_Establishment_Year"])
+                Outlet_Size=float(request.form["Outlet_Size"])
+                Outlet_Location_Type=float(request.form["Outlet_Location_Type"])
+                Outlet_Type=float(request.form["Outlet_Type"])
+
+                values=[Item_Weight, Item_Fat_Content, Item_Visibility, Item_Type, Item_MRP,
+                        Outlet_Establishment_Year, Outlet_Size, Outlet_Location_Type, Outlet_Type]
+
+                numerical_cols= [Item_Weight,Item_Visibility,Item_MRP,Outlet_Establishment_Year]
