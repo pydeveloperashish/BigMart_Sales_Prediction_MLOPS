@@ -42,8 +42,8 @@ def test_form_response_correct_range(data=input_data["correct_range"]):
     assert TARGET_range["min"] <= response <= TARGET_range["max"]
 
 def test_form_response_incorrect_range(data=input_data["incorrect_range"]):
-    with pytest.raises(prediction_service.prediction.NotInRange):
-        response = form_response(data)
+    response = form_response(data)
+    assert response["response"] == prediction_service.prediction.NotInRange().message
 
 
 #def test_form_response_correct_range(data=input_data["correct_range"]):
