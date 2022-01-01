@@ -21,21 +21,15 @@ def index():
 @app.route('/predict', methods=['POST', 'GET'])
 def result():
     if request.method == "POST":
-        try:
-            if request.form:
-                data_req = dict(request.form)
-                response = prediction.form_response(data_req)
-                return jsonify(response)
+        if request.form:
+            data_req = dict(request.form)
+            response = prediction.form_response(data_req)
+            return jsonify(response)
 
-            elif request.json:
-                response = prediction.api_response(request.json)
-                print(response)
-                return jsonify(response)
-
-        except Exception as e:
-            print(e)
-            error = {"error": "Something went wrong!! Try Again"}
-            return jsonify(error)
+        elif request.json:
+            response = prediction.api_response(request.json)
+            print(response)
+            return jsonify(response)
     else:
         return render_template("index.html")
 

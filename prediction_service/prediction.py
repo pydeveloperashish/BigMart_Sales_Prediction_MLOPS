@@ -69,11 +69,17 @@ def validate_input(dict_request):
 
 
 def form_response(dict_request):
-    if validate_input(dict_request):
-        data = [list(dict_request.values())]
-        response = predict(data)
-        response = response[0]
+    try:
+        if validate_input(dict_request):
+            data = [list(dict_request.values())]
+            response = predict(data)
+            response = response[0]
+            return response
+
+    except Exception as e:
+        response = {"the_expected_range": get_schema(), "response": str(e)}
         return response
+
 
 def api_response(dict_request):
     try:
@@ -81,7 +87,7 @@ def api_response(dict_request):
             data = np.array([list(dict_request.values())])
             print(data)
             response = predict(data)
-            #response = response[0]
+           # response = response[0]
             print(response)
             return response
 
