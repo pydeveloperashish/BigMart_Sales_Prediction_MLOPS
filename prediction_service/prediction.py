@@ -59,7 +59,7 @@ def validate_input(dict_request):
 
 
     #for col, val in dict_request.items():
-       # _validate_cols(col)
+     #   _validate_cols(col)
        # _validate_values(col, val)
     return True
 
@@ -70,7 +70,7 @@ def form_response(dict_request):
         if validate_input(dict_request):
             data = [list(dict_request.values())]
             response = predict(data)
-            response = {"response": response[0]}
+            response = {"Prediction": response[0]}
             return response
 
     except Exception as e:
@@ -80,10 +80,11 @@ def form_response(dict_request):
 def api_response(dict_request):
     try:
         if validate_input(dict_request):
-            data = np.array([list(dict(dict_request.form).values())])
+            data = np.array([list(dict_request.values())])
+            print(data)
             response = predict(data)
             print(response)
-            response = {"response": response}
+            response = {"Prediction": response}
             return response
 
     except Exception as e:

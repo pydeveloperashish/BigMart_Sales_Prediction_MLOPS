@@ -22,9 +22,7 @@ def result():
         try:
             if request.form:
                 data_req = dict(request.form)
-                print(data_req)
                 response = prediction.form_response(data_req)
-                print(response)
                 return jsonify(response)
 
             elif request.json:
@@ -35,7 +33,7 @@ def result():
         except Exception as e:
             print(e)
             error = {"error": "Something went wrong!! Try Again"}
-            return jsonify(e)
+            return jsonify(error)
     else:
         return render_template("index.html")
 
