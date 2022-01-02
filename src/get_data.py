@@ -9,6 +9,7 @@ import yaml
 import pandas
 import argparse
 
+params_path = "params.yaml"
 
 def read_params(config_path):
     with open(config_path) as yaml_file:
