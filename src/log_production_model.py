@@ -17,7 +17,9 @@ def log_production_model(config_path):
 
     runs = mlflow.search_runs(experiment_ids=1)
     lowest = runs["metrics.mae"].sort_values(ascending=True)[0]
+    print(lowest)
     lowest_run_id = runs[runs["metrics.mae"] == lowest]["run_id"][0]
+    print(lowest_run_id)
 
     client = MlflowClient()
     for mv in client.search_model_versions(f"name = '{model_name}'"):
@@ -49,3 +51,4 @@ if __name__ == "__main__":
     args = argparse.ArgumentParser()
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()
+    log_production_model(config_path=parsed_args.config)
