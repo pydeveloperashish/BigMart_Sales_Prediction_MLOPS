@@ -6,25 +6,16 @@ from pprint import pprint
 import joblib
 import os
 
-
+params_path = "params.yaml"
 
 def log_production_model(config_path):
     config = read_params(config_path)
-
-
     mlflow_config = config["mlflow_config"]
-
-
     model_name = mlflow_config["registered_model_name"]
-
-
     remote_server_uri = mlflow_config["remote_server_uri"]
-
     mlflow.set_tracking_uri(remote_server_uri)
 
-
     runs = mlflow.search_runs(experiment_ids=1)
-    #print(runs["metrics.mae"].sort_values(ascending=True))
     lowest = runs["metrics.mae"].sort_values(ascending=True, ignore_index=True)[0]
     lowest_run_id = runs[runs["metrics.mae"] == lowest]["run_id"].iloc[0]
 
@@ -58,8 +49,8 @@ def log_production_model(config_path):
     joblib.dump(loaded_model, model_path)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     args = argparse.ArgumentParser()
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()
-    data = log_production_model(config_path=parsed_args.config)
+    log_production_model(config_path=parsed_args.config)
