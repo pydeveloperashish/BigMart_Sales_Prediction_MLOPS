@@ -63,8 +63,6 @@ def train_and_evaluate(config_path):
         print(predicted_values)
         (rmse, mae, r2) = eval_metrics(test_y, predicted_values)
 
-
-
         mlflow.log_param("alpha", alpha)
         mlflow.log_param("l1_ratio", l1_ratio)
         mlflow.log_metric("rmse", rmse)
