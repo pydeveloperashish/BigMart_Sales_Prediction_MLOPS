@@ -53,7 +53,7 @@ jobs:
   push_to_registry:
     name: Build and push Docker image to Docker Hub
     # ...but only when a `release` is `published` (combined with `on`)
-    if: github.event_name == 'release'
+    if: github.ref == 'refs/heads/main' && job.status == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
