@@ -1,3 +1,5 @@
+APP LINK:- https://bigmart-practise.herokuapp.com/
+
 create env
 
 activate the env
@@ -36,3 +38,8 @@ create an artifacts folder
 
 mlflow server command - 
 mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts --host 127.0.0.1 -p 8769
+
+
+docker login
+docker tag image:local_tag username/reponame:customtag
+docker push username/imagename:customtag
