@@ -20,8 +20,7 @@ git branch -M main
 
 git add . && git commit -m "docker added"  && git push origin main
 
-git add . && git commit -m "readme_update"  && git push origin mlflow
-
+git add . && git commit -m "docker added"  && git push origin mlflow
 
 
 tox # Tox command
